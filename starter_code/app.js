@@ -48,15 +48,15 @@ app.post('/artists', (req, res, next) => {
 
     let artist=req.body.artist;
     console.log(req.body);
-    let artistsInfo;
     spotifyApi.searchArtists(artist)
     .then(data => {
 
-      console.log("The received data from the API: ", prettyjson.render(data.body));
-      let d=JSON.stringify(data.body);
-
+      console.log("The received data from the API: ", prettyjson.render(data.body.artists.items));
+      //let artistsInfo=JSON.stringify(data.body.artists.items);
+      let name= prettyjson.render(data.body.artists.items[0].images[0].url);
       // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
-      res.send(`${d}`);
+      console.log(name);
+      res.render('artists', {data});
 
     })
     .catch(err => {

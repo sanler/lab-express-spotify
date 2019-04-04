@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Spotify</title>
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+    crossorigin="anonymous">
+</head>
+<body>
+<div class="beer-container">
+
+  {{#each data.body.artists.items}}
+
+    <div class="card" style="width: 33.333%;">
+
+       <img class="cardimg" src="{{this.images.0.url}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <p class="card-text">{{this.name}}</p>
+        </div>
+    </div>
+    <a type="button">View Albums</a>
+  {{/each}}
+
+</div>
+</body>
+</html>
+
+
+
