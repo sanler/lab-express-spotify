@@ -65,7 +65,13 @@ app.post('/artists', (req, res, next) => {
   });  
   
 
-  app.get('/albums', (req, res, next) => {
+  /*app.get('/albums', (req, res, next) => {
+    res.render('albums');
+  });*/
+
+  app.get('/albums/:artistId', (req, res, next) => {
+    // .getArtistAlbums() code goes here
+
     res.render('albums');
   });
 
