@@ -55,7 +55,7 @@ app.post('/artists', (req, res, next) => {
       //let artistsInfo=JSON.stringify(data.body.artists.items);
       let name= prettyjson.render(data.body.artists.items[0].images[0].url);
       // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
-      console.log(name);
+      console.log(prettyjson.render(data.body.artists.items[0].id));
       res.render('artists', {data});
 
     })
@@ -70,9 +70,22 @@ app.post('/artists', (req, res, next) => {
   });*/
 
   app.get('/albums/:artistId', (req, res, next) => {
-    // .getArtistAlbums() code goes here
+    
+    spotifyApi.getArtistAlbums(req.params.artistId).then(
+      
+      function(data) {
+        
+        console.log('Artist albums', data.body);
+        
+        res.render('albums',{data});
 
-    res.render('albums');
+      },
+      function(err) {
+        
+        console.error(err);
+      
+      }
+    );
   });
 
 //--2. SERVER LISTENING
